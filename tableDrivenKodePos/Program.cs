@@ -1,4 +1,7 @@
-﻿public class KodePos
+﻿using System;
+using static KodePos;
+
+public class KodePos
 {
     public enum Kelurahan { Batununggal, Kujangsari, Mengger, Wates, Cijaura, Jatisari, Margasari, Sekejati, Kebonwaru, Maleer, Samoja};
 
@@ -9,3 +12,20 @@
     }
 };
 
+public class main
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Masukkan nama kelurahan yang ingin anda cari kode posnya");
+        Console.Write("Nama Kelurahan: ");
+        String inputKelurahan = Console.ReadLine();
+        if (Enum.TryParse<KodePos.Kelurahan>(inputKelurahan, true, out KodePos.Kelurahan kelurahan))
+        {
+            Console.WriteLine($"Kode Pos: {KodePos.getKodePos(kelurahan)}");
+        }
+        else
+        {
+            Console.WriteLine("Nama kelurahan tidak valid.");
+        }
+    }
+}
